@@ -6,6 +6,8 @@ import com.bsanju.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/books")
 public class BookController {
@@ -32,4 +34,9 @@ public class BookController {
         bookEventProducer.sendEvent(event);
         return "Book purchased: " + book.getTitle();
     }
+    @GetMapping
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll();
+    }
+
 }
