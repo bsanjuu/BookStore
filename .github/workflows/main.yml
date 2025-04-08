@@ -1,0 +1,30 @@
+name: 🚀 Build & Push Backend + Frontend Docker Images
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🧾 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 🐳 Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      # BACKEND
+      - name: 🔨 Build backend image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/bookstore-backend ./Backend
+
+      - name: 📤 Push backend
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/bookstore-backend
+
+      # FRONTEND
+      - name: 🔨 Build frontend image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/bookstore-frontend ./bookstore-ui
+
+      - name: 📤 Push frontend
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/bookstore-frontend
