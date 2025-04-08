@@ -49,7 +49,7 @@ BookStore/
 │   ├── src/
 │   ├── Dockerfile
 │   └── pom.xml
-├── frontend/         # React app
+├── bookstore-ui/         # React app
 │   ├── src/
 │   ├── Dockerfile
 │   └── package.json
