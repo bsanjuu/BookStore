@@ -15,7 +15,7 @@ public class BookEventConsumer {
     public void listen(String message) {
         System.out.println("Received Kafka Event: " + message);
 
-        // Send email notification
+
         if (message.contains("NEWBOOK")) {
             notificationService.sendEmail("New Book Added", message);
         } else if (message.contains("PURCHASE")) {

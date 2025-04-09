@@ -33,7 +33,7 @@ const HomePage = () => {
                     }}>
                         <h3>{book.title}</h3>
                         <p><strong>Author:</strong> {book.author}</p>
-                        <p><strong>Price:</strong> ₹{book.price}</p>
+                        <p><strong>Price:</strong> ${book.price}</p>
                         <button onClick={() => purchaseBook(book.id)}>Buy</button>
                     </div>
                 ))}
